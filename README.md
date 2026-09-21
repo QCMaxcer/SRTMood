@@ -17,6 +17,19 @@ SRTMood 是一个本地全栈 Web 应用，使用 TypeSafe Jev 模型判断字�
 - Node.js 20 或更高版本
 - TypeSafe API Key：https://console.typesafe.ai/keys
 
+## 双击运行（推荐）
+
+Windows 下直接双击项目根目录的 `启动 SRTMood.bat`，即可启动并自动弹出界面窗口：
+
+- 首次运行会自动安装依赖并构建前后端，需要几分钟；之后启动只需几秒。
+- 服务默认监听 `http://127.0.0.1:3001`，端口被占用时会自动顺延到下一个可用端口。
+- 如果服务已在运行，再次双击只会打开一个新的界面窗口，不会重复启动。
+- 界面以无地址栏的应用窗口打开；系统缺少 Edge / Chrome 时退回默认浏览器。
+- 停止服务：双击 `停止 SRTMood.bat`。直接关闭界面窗口不会停止后台服务。
+- 启动日志与进程号保存在 `logs/` 目录，便于排查问题。
+
+首次使用仍需在界面左侧设置面板输入 TypeSafe API Key。
+
 ## 安装与运行
 
 ```bash
@@ -38,6 +51,9 @@ http://localhost:5173
 - `npm run build`：构建 `server/dist` 和 `client/dist`。
 - `npm start`：由 Express 服务端提供构建后的前端页面。
 - `npm test`：运行服务端和前端单元测试。
+
+服务端默认只监听 `127.0.0.1`，需要通过局域网访问时可设置 `HOST` 环境变量，例如
+`$env:HOST="0.0.0.0"; npm start`。
 
 ## 配置说明
 

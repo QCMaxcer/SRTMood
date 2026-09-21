@@ -22,6 +22,8 @@ const serverRoot = path.resolve(
 );
 const clientDist = path.resolve(serverRoot, "../client/dist");
 const port = Number(process.env.PORT ?? 3001);
+// 本地工具默认只监听回环地址，避免 Windows 防火墙弹窗和局域网暴露。
+const host = process.env.HOST ?? "127.0.0.1";
 
 const app = express();
 
@@ -171,6 +173,6 @@ app.use(
   },
 );
 
-app.listen(port, () => {
-  console.log(`SRTMood API listening on http://localhost:${port}`);
+app.listen(port, host, () => {
+  console.log(`SRTMood API listening on http://${host}:${port}`);
 });
